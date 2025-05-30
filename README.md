@@ -65,8 +65,6 @@ bind = $mainMod, N, exec, uwsm app -- zsh -i -c swww-sequential-wallpapers.sh
 
 The sequential wallpaper script loads all wallpapers in the Pictures/hyprland directory, except for dark.png and light.png.
 
-Move the theme and wallpaper scripts to ~/.local/bin.
-
 > **Note:** The scripts do not require GNOME or GDM to be active or running. They will work independently of these services.
 
 ### Rofi Launcher
@@ -108,7 +106,7 @@ gsettings set org.gnome.desktop.interface color-scheme
 These commands in the script change the GTK theme, icon theme, and color scheme to match the selected theme (either light or dark).
 
 ## Zsh
-
+>
 To have Pokémons appear every time the terminal opens, install pokeget-rs, and add the following to a custom file.zsh in your $ZSH/custom folder:
 
 If using Powerlevel10k, edit **.p10k.zsh** and set the Instant Prompt to quiet:
