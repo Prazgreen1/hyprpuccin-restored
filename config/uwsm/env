@@ -12,5 +12,5 @@ export XDG_SESSION_TYPE=wayland
 export XDG_SESSION_DESKTOP=Hyprland
 export OBS_PORTAL=1
 export HYPRSHOT_DIR="$HOME/Pictures/Screenshots"
-
-
+export XCURSOR_THEME=Banana
+export XCURSOR_SIZE=27
