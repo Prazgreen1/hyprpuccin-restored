@@ -1,0 +1,7 @@
+#!/bin/sh
+export LC_NUMERIC=C
+V=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2}')
+V=$(printf "%.2f" "$(echo "$V + 0.05" | bc)")
+[ "$(echo "$V > 1.0" | bc)" -eq 1 ] && V=1.0
+wpctl set-volume @DEFAULT_AUDIO_SINK@ "$V"
+
