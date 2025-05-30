@@ -54,13 +54,13 @@ Check hyprland.conf for the keybindings.
 To execute the theme switch script:
 
 ```ini
-bind = $mainMod, W, exec, uwsm app -- zsh -i -c theme_orchestrator
+bind = $mainMod, W, exec, uwsm app -- zsh -i -c theme_orchestrator.sh
 ```
 
 To execute the sequential wallpaper change script:
 
 ```ini
-bind = $mainMod, N, exec, uwsm app -- zsh -i -c nextwall
+bind = $mainMod, N, exec, uwsm app -- zsh -i -c swww-sequential-wallpapers.sh
 ```
 
 The sequential wallpaper script loads all wallpapers in the Pictures/hyprland directory, except for dark.png and light.png.
