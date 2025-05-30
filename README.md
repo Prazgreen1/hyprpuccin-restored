@@ -54,13 +54,13 @@ Check hyprland.conf for the keybindings.
 To execute the theme switch script:
 
 ```ini
-bind = $mainMod, W, exec, theme_orchestrator  
+bind = $mainMod, W, exec, uwsm app -- zsh -i -c theme_orchestrator
 ```
 
 To execute the sequential wallpaper change script:
 
 ```ini
-bind = $mainMod, M, exec, zsh -i -c nextwall 
+bind = $mainMod, N, exec, uwsm app -- zsh -i -c nextwall
 ```
 
 The sequential wallpaper script loads all wallpapers in the Pictures/hyprland directory, except for dark.png and light.png.
@@ -74,19 +74,25 @@ Move the theme and wallpaper scripts to ~/.local/bin.
 To use the app launcher:
 
 ```ini
-bind = $mainMod, Space, exec, $rofi_path/rofi/launcher/launcher.sh 
+bind = $mainMod, Space, exec, uwsm app -- $rofi_path/launcher/launcher.sh
 ```
 
 To use the bluetooth launcher:
 
 ```ini
- bind = $mainMod, X, exec, $rofi_path/bluetooth/bluetooth.sh 
+bind = $mainMod, X, exec, uwsm app -- $rofi_path/bluetooth/bluetooth.sh
 ```
 
-To use the clipboard:
+To use the clipboard launcher:
 
 ```ini
-bind = $mainmod, z, exec, $rofi_path/clipboard/launcher.sh
+bind = $mainMod, Z, exec, uwsm app -- $rofi_path/clipboard/launcher.sh
+```
+
+To use the power menu launcher
+
+```ini
+bind = $mainMod, Z, exec, uwsm app -- $rofi_path/powermenu/powermenu.sh
 ```
 
 > There are other modules in .config/rofi that I don't use, but they are also good.
