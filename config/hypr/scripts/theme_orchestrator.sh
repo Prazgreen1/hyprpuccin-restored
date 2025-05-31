@@ -25,7 +25,7 @@ declare -A DARK_THEME=(
   [btop]="$CONFIG_DIR/btop/themes/catppuccin_frappe.theme"
   [zathura]="catppuccin-frappe"
   [tmux]="frappe"
-  [gtk]="Adwaita-dark"
+  [gtk]="Adwaita"
   [icon]="Reversal-purple"
   [color_scheme]="prefer-dark"
   [wallpaper]="$PICTURES_DIR/dark.png"
@@ -39,7 +39,7 @@ declare -A LIGHT_THEME=(
   [btop]="$CONFIG_DIR/btop/themes/catppuccin_latte.theme"
   [zathura]="catppuccin-latte"
   [tmux]="latte"
-  [gtk]="Adwaita"
+  [gtk]="Adwaita-dark"
   [icon]="Reversal-black"
   [color_scheme]="prefer-light"
   [wallpaper]="$PICTURES_DIR/light.png"
@@ -65,29 +65,10 @@ apply_mako_theme() {
     other="frappe_teal"
   fi
 
+  # Rename currently active to original name
   [ -e "$MAKO_DIR/config" ] && mv "$MAKO_DIR/config" "$MAKO_DIR/$other"
   mv "$MAKO_DIR/$selected" "$MAKO_DIR/config"
   makoctl reload
-}
-
-update_gtk_settings() {
-  local ini_dir="$1"
-  local theme="$2"
-  local icon="$3"
-  local prefer_dark="$4"
-
-  local ini_file="$ini_dir/settings.ini"
-  [ -e "$ini_file" ] || return
-
-  # Converte prefer-dark/prefer-light para 1/0
-  local prefer_dark_value=0
-  if [[ "$prefer_dark" == "prefer-dark" ]]; then
-    prefer_dark_value=1
-  fi
-
-  sed -i "s|^gtk-theme-name=.*|gtk-theme-name=$theme|" "$ini_file"
-  sed -i "s|^gtk-icon-theme-name=.*|gtk-icon-theme-name=$icon|" "$ini_file"
-  sed -i "s|^gtk-application-prefer-dark-theme=.*|gtk-application-prefer-dark-theme=$prefer_dark_value|" "$ini_file"
 }
 
 apply_theme() {
@@ -110,8 +91,17 @@ apply_theme() {
   gsettings set org.gnome.desktop.interface icon-theme "${theme_ref[icon]}" &
   gsettings set org.gnome.desktop.interface color-scheme "${theme_ref[color_scheme]}" &
 
-  update_gtk_settings "$CONFIG_DIR/gtk-3.0" "${theme_ref[gtk]}" "${theme_ref[icon]}" "${theme_ref[color_scheme]}"
-  update_gtk_settings "$CONFIG_DIR/gtk-4.0" "${theme_ref[gtk]}" "${theme_ref[icon]}" "${theme_ref[color_scheme]}"
+  update_gtk3_settings() {
+    local ini_file="$HOME/.config/gtk-3.0/settings.ini"
+    [ -e "$ini_file" ] || return
+
+    local prefer_dark_value=0
+    if [[ "${1}" == "prefer-dark" ]]; then
+      prefer_dark_value=1
+    fi
+
+    sed -i "s|^gtk-application-prefer-dark-theme=.*|gtk-application-prefer-dark-theme=$prefer_dark_value|" "$ini_file"
+  }
 
   swww img "${theme_ref[wallpaper]}" --transition-step 80 --transition-fps 80 \
     --transition-type any --transition-duration 1 &
@@ -119,6 +109,8 @@ apply_theme() {
   tmux source "${CONFIG_FILES[5]}" &
 
   apply_mako_theme "${theme_ref[mako_theme]}"
+
+  update_gtk3_settings "${theme_ref[color_scheme]}"
 
   wait
 }
