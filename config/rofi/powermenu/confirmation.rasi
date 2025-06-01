@@ -6,11 +6,11 @@ configuration {
 /*****----- Global Properties -----*****/
 * {
     font: "JetBrainsMono Nerd Font Mono 12";
-    background: #11111b;
-    foreground: #cdd6f4;
-    selected: #cba6f7;
-    active: #f5e0dc;
-    urgent: #f38ba8;
+    background:                  #11111b;
+    foreground:                  #eff1f5;
+    selected:                    #8caaee;
+    active:                      #6E77FF;
+    urgent:                      #8E3596;
 }
 
 /*
@@ -87,6 +87,6 @@ element-text {
 }
 
 element selected.normal {
-    background-color: #cba6f7;
+    background-color: @selected;
     text-color: #11111b;
 }

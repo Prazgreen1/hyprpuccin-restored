@@ -6,8 +6,8 @@ configuration {
     display-run:                "";
     display-filebrowser:        "";
     display-window:             "";
-	drun-display-format:        "{name}";
-	window-format:              "{w} {c}";
+	  drun-display-format:        "{name}";
+	  window-format:              "{w} {c}";
 }
 
 /*****----- Global Properties -----*****/

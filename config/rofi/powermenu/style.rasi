@@ -5,27 +5,26 @@ configuration {
 
 /*****----- Global Properties -----*****/
 * {
-    font: "JetBrainsMono Nerd Font Mono 12";
-    background: #11111b;
-    foreground: #cdd6f4;
-    selected: #cba6f7;
-    active: #f5e0dc;
-    urgent: #f38ba8;
-}
+    font: "JetBrainsMono Nerd Font Mono 10";
+    background:                  #11111b;
+    foreground:                  #eff1f5;
+    selected:                    #8caaee;
+    active:                      #6E77FF;
+    urgent:                      #8E3596;
+    }
 
 /*****----- Main Window -----*****/
 window {
-    transparency: "real";
-    location: center;
-    anchor: center;
-    fullscreen: false;
-    width: 300px;
-    x-offset: 0px;
-    y-offset: 0px;
-
-    padding: 4px;
-    border-radius: 4px;
-    background-color: @background;
+    transparency:               "real";
+    location:                   center;
+    anchor:                     center;
+    fullscreen:                 false;
+    width:                      300px;
+    x-offset:                   0px;
+    y-offset:                   0px;
+    padding:                    4px;
+    border-radius:              4px;
+    background-color:           @background;
 }
 
 /*****----- Main Box -----*****/
@@ -60,7 +59,7 @@ prompt {
 listview {
     enabled: true;
     columns: 1;
-    lines: 6;
+    lines: 5;
     cycle: true;
     dynamic: true;
     scrollbar: false;
@@ -77,7 +76,7 @@ listview {
 /*****----- Elements (Text Instead of Icons) -----*****/
 element {
     enabled: true;
-    padding: 10px;
+    padding: 15px;
     border-radius: 2px;
     background-color: #313244;
     text-color: #cdd6f4;
@@ -85,7 +84,7 @@ element {
 }
 
 element selected.normal {
-    background-color: #cba6f7;
+    background-color: @selected;
     text-color: #1e1e2e;
 }
 
