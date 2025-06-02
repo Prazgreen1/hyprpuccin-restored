@@ -20,7 +20,7 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       500px;
+    width:                       400px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -71,7 +71,7 @@ entry {
 textbox-prompt-colon {
     font:                        "Font Awesome 5 Free 14";
     enabled:                     true;
-    expand:                      false;
+    expand:                      true;
     str:                         "";
     padding:                     11px 14px 11px 14px;
     border-radius:               100%;
